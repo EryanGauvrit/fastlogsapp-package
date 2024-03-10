@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Fast logs app is a simple app to log and display logs",
   "main": "dist/index.cjs",
+  "homepage": "https://fast-logs-app.eryan-portfolio.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EryanGauvrit/fastlogsapp-package.git"
+  },
   "scripts": { 
     "build": "microbundle",     
     "dev": "microbundle watch"
@@ -20,7 +25,7 @@
   "unpkg": "./dist/index.umd.js", 
   
   "types": "./dist/index.d.ts",
-  "private": true,
+  "private": false,
   "author": "eryan.gauvrit@gmail.com",
   "license": "ISC"
 }
