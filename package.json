@@ -1,0 +1,26 @@
+{
+  "name": "fastlogsapp",
+  "version": "1.0.0",
+  "description": "Fast logs app is a simple app to log and display logs",
+  "main": "dist/index.cjs",
+  "scripts": { 
+    "build": "microbundle",     
+    "dev": "microbundle watch"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "microbundle": "^0.15.1",
+    "typescript": "^5.2.2"
+  },
+  "type": "module", 
+  "source": "src/index.ts", 
+  "require": "./dist/index.cjs", 
+  "default": "./dist/index.esm.js", 
+  "module": "./dist/index.esm.js", 
+  "unpkg": "./dist/index.umd.js", 
+  
+  "types": "./dist/index.d.ts",
+  "private": true,
+  "author": "eryan.gauvrit@gmail.com",
+  "license": "ISC"
+}
