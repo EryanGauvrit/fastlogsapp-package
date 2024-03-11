@@ -6,14 +6,11 @@ export type PersonalData = {
 }
 
 export class FastLogsRepository {
-    // private API_URL = "http://localhost:8080";
     private API_URL = "https://fast-logs-app.onrender.com";
-    private secretKey: string;
-    private sourceName: string;
+    private secretKey: string
 
-    constructor(secretKey: string, sourceName: string) {
+    constructor(secretKey: string,) {
         this.secretKey = secretKey;
-        this.sourceName = sourceName;
     }
 
     async getFastLogs(filters?: FastLogFilter): Promise<FastLogGet> {
@@ -26,6 +23,9 @@ export class FastLogsRepository {
                 "Authorization": `Bearer ${this.secretKey}`
             }
         });
+        if(res.status === 401){
+            throw new Error("Unauthorized");
+        }
         
         if (res.status !== 200) {
             throw new Error("Failed to fetch fast logs");
@@ -36,7 +36,6 @@ export class FastLogsRepository {
 
     async postFastLog(fastLog: FastLogPost): Promise<void> {
         const personalData = await this.getUserPersonalData();
-        fastLog.sourceName = this.sourceName;
         fastLog.ip_address = personalData.address_ip;
         fastLog.navigator = personalData.browser;
         const res = await fetch(`${this.API_URL}/log`, {
@@ -47,6 +46,9 @@ export class FastLogsRepository {
             },
             body: JSON.stringify(fastLog)
         });
+        if(res.status === 401){
+            throw new Error("Unauthorized");
+        }
 
         if (res.status !== 200) {
             throw new Error("Failed to post fast log");
@@ -61,6 +63,9 @@ export class FastLogsRepository {
                 "Authorization": `Bearer ${this.secretKey}`
             }
         });
+        if(res.status === 401){
+            throw new Error("Unauthorized");
+        }
 
         if (res.status !== 200) {
             throw new Error("Failed to delete fast log");
@@ -75,6 +80,9 @@ export class FastLogsRepository {
                 "Authorization": `Bearer ${this.secretKey}`
             }
         });
+        if(res.status === 401){
+            throw new Error("Unauthorized");
+        }
 
         if (res.status !== 200) {
             throw new Error("Failed to fetch user personal data");

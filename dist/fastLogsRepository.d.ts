@@ -6,8 +6,7 @@ export type PersonalData = {
 export declare class FastLogsRepository {
     private API_URL;
     private secretKey;
-    private sourceName;
-    constructor(secretKey: string, sourceName: string);
+    constructor(secretKey: string);
     getFastLogs(filters?: FastLogFilter): Promise<FastLogGet>;
     postFastLog(fastLog: FastLogPost): Promise<void>;
     deleteFastLog(id: number): Promise<void>;

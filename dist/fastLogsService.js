@@ -39,8 +39,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FastLogsService = void 0;
 var fastLogsRepository_1 = require("./fastLogsRepository");
 var FastLogsService = /** @class */ (function () {
-    function FastLogsService(secretKey, sourceName) {
-        this.fastLogsRepository = new fastLogsRepository_1.FastLogsRepository(secretKey, sourceName);
+    function FastLogsService(secretKey) {
+        this.fastLogsRepository = new fastLogsRepository_1.FastLogsRepository(secretKey);
     }
     FastLogsService.prototype.getFastLogs = function (filters) {
         return __awaiter(this, void 0, void 0, function () {

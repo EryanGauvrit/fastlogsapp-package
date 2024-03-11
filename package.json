@@ -1,6 +1,6 @@
 {
   "name": "fastlogsapp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Fast logs app is a simple app to log and display logs",       
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

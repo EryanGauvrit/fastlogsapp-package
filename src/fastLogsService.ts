@@ -55,8 +55,8 @@ export type FastLogFilter = {
 }
 
 export class FastLogsService {
-    constructor(secretKey: string, sourceName: string) {
-        this.fastLogsRepository = new FastLogsRepository(secretKey, sourceName);
+    constructor(secretKey: string) {
+        this.fastLogsRepository = new FastLogsRepository(secretKey);
     }
 
     private fastLogsRepository: FastLogsRepository;

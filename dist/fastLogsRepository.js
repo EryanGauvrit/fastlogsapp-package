@@ -38,11 +38,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FastLogsRepository = void 0;
 var FastLogsRepository = /** @class */ (function () {
-    function FastLogsRepository(secretKey, sourceName) {
-        // private API_URL = "http://localhost:8080";
+    function FastLogsRepository(secretKey) {
         this.API_URL = "https://fast-logs-app.onrender.com";
         this.secretKey = secretKey;
-        this.sourceName = sourceName;
     }
     FastLogsRepository.prototype.getFastLogs = function (filters) {
         return __awaiter(this, void 0, void 0, function () {
@@ -60,6 +58,9 @@ var FastLogsRepository = /** @class */ (function () {
                             })];
                     case 1:
                         res = _a.sent();
+                        if (res.status === 401) {
+                            throw new Error("Unauthorized");
+                        }
                         if (res.status !== 200) {
                             throw new Error("Failed to fetch fast logs");
                         }
@@ -76,7 +77,6 @@ var FastLogsRepository = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.getUserPersonalData()];
                     case 1:
                         personalData = _a.sent();
-                        fastLog.sourceName = this.sourceName;
                         fastLog.ip_address = personalData.address_ip;
                         fastLog.navigator = personalData.browser;
                         return [4 /*yield*/, fetch("".concat(this.API_URL, "/log"), {
@@ -89,6 +89,9 @@ var FastLogsRepository = /** @class */ (function () {
                             })];
                     case 2:
                         res = _a.sent();
+                        if (res.status === 401) {
+                            throw new Error("Unauthorized");
+                        }
                         if (res.status !== 200) {
                             throw new Error("Failed to post fast log");
                         }
@@ -111,6 +114,9 @@ var FastLogsRepository = /** @class */ (function () {
                         })];
                     case 1:
                         res = _a.sent();
+                        if (res.status === 401) {
+                            throw new Error("Unauthorized");
+                        }
                         if (res.status !== 200) {
                             throw new Error("Failed to delete fast log");
                         }
@@ -133,6 +139,9 @@ var FastLogsRepository = /** @class */ (function () {
                         })];
                     case 1:
                         res = _a.sent();
+                        if (res.status === 401) {
+                            throw new Error("Unauthorized");
+                        }
                         if (res.status !== 200) {
                             throw new Error("Failed to fetch user personal data");
                         }

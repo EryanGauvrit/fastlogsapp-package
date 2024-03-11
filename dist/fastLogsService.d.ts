@@ -47,7 +47,7 @@ export type FastLogFilter = {
     page?: string;
 };
 export declare class FastLogsService {
-    constructor(secretKey: string, sourceName: string);
+    constructor(secretKey: string);
     private fastLogsRepository;
     getFastLogs(filters?: FastLogFilter): Promise<FastLogGet>;
     postFastLog(fastLog: FastLogPost): Promise<void>;
